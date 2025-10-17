@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Themilanesa73 - Contador CROMADAS GO</title>
+    <style>
+        /* -------------------------------------- */
+        /* ESTILOS CSS */
+        /* -------------------------------------- */
+        body {
+            /* FONDO: URL de Imgur proporcionada */
+            background-image: url('https://i.imgur.com/CbYXV51.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            /* CAMBIO: Color de texto general a negro para visibilidad */
+            color: #000; 
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Contenedor principal para centrar el contenido */
+        .container {
+            /* Fondo semi-transparente BLANCO/CLARO para contraste con las letras negras */
+            background-color: rgba(255, 255, 255, 0.85); 
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 90%;
+            width: 800px;
+            /* Sombra sutil y más oscura */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Título principal */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            /* CAMBIO: Color del título a negro con sombra clara */
+            color: #000;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Estilos del contador */
+        #contador {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            padding: 15px 20px; /* Más padding para que sea más grande */
+            /* CAMBIO ESTÉTICA: Fondo blanco/claro, borde azul, texto grande */
+            background-color: #fff; 
+            border: 3px solid #1f37e0; /* Borde de color azul fate go */
+            border-radius: 10px;
+            font-size: 1.8em; /* Tamaño más grande */
+            font-weight: bold;
+            min-width: 110px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            line-height: 1.1;
+            color: #000; /* Números en negro */
+        }
+
+        .time-unit span {
+            display: block;
+            font-size: 0.5em;
+            font-weight: normal;
+            opacity: 0.9;
+            color: #1f37e0; /* Texto de la unidad (Días, Horas) en azul */
+            margin-top: 5px;
+        }
+
+        /* GIF central (FATE GO) */
+        #gif-central {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 5px solid #000; /* Borde negro para que contraste */
+            border-radius: 10px;
+        }
+        
+        /* Contenedor del GIF extra y texto "anvier3" */
+        #extra-container {
+            position: fixed; 
+            bottom: 20px;
+            right: 20px;
+            text-align: center;
+            opacity: 0.95;
+            z-index: 10;
+        }
+        
+        /* Imagen extra "anvier3" */
+        #img-extra {
+            max-width: 150px; 
+            height: auto;
+            border-radius: 5px;
+            border: 2px solid #000; /* Borde negro */
+            display: block; 
+            margin: 0 auto 5px auto; 
+        }
+        
+        /* Texto "anvier3" */
+        #anvier-text {
+            font-weight: bold;
+            font-size: 0.9em;
+            /* Fondo negro semi-transparente para que resalte sobre el fondo de imagen */
+            color: #fff; 
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        /* GIF extra (CROMADAS GO) */
+        #gif-extra {
+            position: fixed; 
+            bottom: 20px;
+            left: 20px; 
+            max-width: 150px;
+            height: auto;
+            border-radius: 5px;
+            opacity: 0.95;
+            border: 2px solid #000; /* Borde negro */
+        }
+        
+        /* Estilos para los botones */
+        .admin-controls {
+            margin-top: 20px;
+        }
+        .admin-controls button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 5px;
+            transition: background-color 0.3s;
+            color: white; /* Texto blanco en botones para contraste */
+            font-weight: bold;
+        }
+
+        #reset-button {
+            background-color: #d9534f; /* Rojo */
+        }
+        
+        #music-button {
+            background-color: #5cb85c; /* Verde */
+        }
+
+        /* -------------------------------------- */
+        /* RESPONSIVE DESIGN (Móvil) */
+        /* -------------------------------------- */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .time-unit {
+                font-size: 1.2em;
+                min-width: 80px;
+                padding: 8px 10px;
+            }
+            #gif-extra, #extra-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <iframe id="audio-iframe" width="0" height="0"
+        src="https://www.youtube.com/embed/ELF1OImSrQw?loop=1&playlist=ELF1OImSrQw&controls=0&enablejsapi=1"
+        frameborder="0" allow="encrypted-media" style="display: none;">
+    </iframe>
+
+    <div class="container">
+        <h1>Cuántos dias Themilanesa73 ha dejado de hablar de fate go (CROMADAS GO)</h1>
+
+        <div id="contador">
+            <div class="time-unit">
+                <span id="years">0</span>
+                <span>Años</span>
+            </div>
+            <div class="time-unit">
+                <span id="months">0</span>
+                <span>Meses</span>
+            </div>
+            <div class="time-unit">
+                <span id="days">0</span>
+                <span>Días</span>
+            </div>
+            <div class="time-unit">
+                <span id="hours">0</span>
+                <span>Horas</span>
+            </div>
+            <div class="time-unit">
+                <span id="minutes">0</span>
+                <span>Minutos</span>
+            </div>
+            <div class="time-unit">
+                <span id="seconds">0</span>
+                <span>Segundos</span>
+            </div>
+        </div>
+
+        <img id="gif-central" src="https://i.imgur.com/mVOLlqq.gif" alt="GIF decorativo central">
+
+        <div class="admin-controls">
+             <button id="music-button">▶ Iniciar Música de Fondo</button>
+            
+            <button id="reset-button" onclick="promptReset()">Reiniciar Contador (Solo Admin)</button>
+        </div>
+    </div>
+
+    <img id="gif-extra" src="https://i.imgur.com/qOgmiui.gif" alt="GIF decorativo extra">
+    
+    <div id="extra-container">
+        <img id="img-extra" src="https://i.imgur.com/NJQhMpn.jpeg" alt="Imagen de anvier3">
+        <div id="anvier-text">anvier3</div>
+    </div>
+
+
+    <script>
+        /* -------------------------------------- */
+        /* LÓGICA JAVASCRIPT DEL CONTADOR Y ADMIN */
+        /* -------------------------------------- */
+
+        // Clave donde se guarda el tiempo de inicio
+        const START_TIME_KEY = 'fateGoResetTime';
+        // Contraseña simple para reiniciar (¡CÁMBIALA POR ALGO SEGURO!)
+        const ADMIN_PASSWORD = 'milanesa'; // <-- ¡RECUERDA CAMBIAR ESTA CONTRASEÑA!
+
+        // 1. Inicializar el tiempo de inicio si no existe
+        if (!localStorage.getItem(START_TIME_KEY)) {
+            localStorage.setItem(START_TIME_KEY, new Date().getTime());
+        }
+        
+        const startTime = parseInt(localStorage.getItem(START_TIME_KEY));
+
+        // 2. Función para actualizar el contador
+        function updateCounter() {
+            const now = new Date().getTime();
+            const elapsedTime = now - startTime;
+
+            let totalSeconds = Math.floor(elapsedTime / 1000);
+
+            // Cálculo base de H:M:S
+            let seconds = totalSeconds % 60;
+            let minutes = Math.floor(totalSeconds / 60) % 60;
+            let hours = Math.floor(totalSeconds / 3600) % 24;
+            let days = Math.floor(totalSeconds / 86400);
+
+            // CÁLCULO DE AÑOS Y MESES (Aproximado)
+            let yearsDisplay = Math.floor(days / 365);
+            let remainingDaysForMonths = days % 365;
+            let monthsDisplay = Math.floor(remainingDaysForMonths / 30);
+            let daysDisplay = remainingDaysForMonths % 30; 
+
+            // Formato de dos dígitos para H:M:S
+            const pad = (num) => num < 10 ? '0' + num : num;
+
+            // Mostrar los valores
+            document.getElementById('years').innerText = yearsDisplay;
+            document.getElementById('months').innerText = monthsDisplay;
+            document.getElementById('days').innerText = daysDisplay;
+            document.getElementById('hours').innerText = pad(hours);
+            document.getElementById('minutes').innerText = pad(minutes);
+            document.getElementById('seconds').innerText = pad(seconds);
+        }
+
+        // 3. Función de Reinicio del Administrador
+        function promptReset() {
+            const userPassword = prompt("Introduce la contraseña de administrador para reiniciar el contador:");
+            if (userPassword === ADMIN_PASSWORD) {
+                const newStartTime = new Date().getTime();
+                localStorage.setItem(START_TIME_KEY, newStartTime);
+                alert("¡Contador Reiniciado! Ahora empieza a contar desde cero.");
+                window.location.reload(); 
+            } else if (userPassword !== null) {
+                alert("Contraseña incorrecta. Solo el administrador puede reiniciar.");
+            }
+        }
+
+        // 4. Lógica para iniciar la música al hacer clic en el botón
+        document.getElementById('music-button').addEventListener('click', function() {
+            const iframe = document.getElementById('audio-iframe');
+            let iframeSrc = iframe.src;
+            
+            if (!iframeSrc.includes('autoplay=1')) {
+                iframe.src = iframeSrc.includes('?') ? iframeSrc + '&autoplay=1' : iframeSrc + '?autoplay=1';
+            }
+            
+            this.style.display = 'none';
+        });
+
+        // 5. Iniciar el contador y actualizarlo cada segundo
+        updateCounter();
+        setInterval(updateCounter, 1000);
+    </script>
+</body>
+</html>
